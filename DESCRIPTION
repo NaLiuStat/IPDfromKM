@@ -1,0 +1,15 @@
+Package: IPDfromKM
+Type: Package
+Title: An implementation that maps digitized survival curves back to individual patient data(IPD)
+Version: 0.1.1
+Data: 2019-09-01
+Authors@R: person("Na","Liu",email="na.liu@uth.tmc.edu",role=c("aut","cre"))
+Author: Na Liu
+Maintainer: Na Liu <na.liu@uth.tmc.edu>
+Description: 
+      This package is an implementation to reconstruct individual patient data (IPD) from coordinates extracted from Kaplan-Meier (KM) survival curves. Digitizing software, such as DigitizeIt(for MAC or windows) or ScanIt(for windows) can be used to get the coordinates from the published KM curves. To increasing accuracy, calculations can also include optional information, like reported numbers of patients at risk (reported at the beginning of time intervals), total number of initial patients, and total number of events.
+Depends: R (>= 3.5.0), survival, boot, ggplot2, gridExtra, survminer 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
