@@ -93,7 +93,12 @@ preprocess <- function(dat,trisk=NULL,nrisk=NULL,totalpts=NULL,maxy=100){
   ndx <- order(d) [(nl-1):min(ceiling(0.99*nl),(nl-1))]
   rdx <- NULL
   for (j in 1:length(ndx)){
-    if (is.element(ndx[j]+1,ndx)) rdx <- c(rdx,ndx[j]+1)
+    ## A spike reverses direction; two large downward steps are valid KM data.
+    if (is.element(ndx[j]+1,ndx) &&
+        (dat$sur[ndx[j]+1]-dat$sur[ndx[j]]) *
+        (dat$sur[ndx[j]+2]-dat$sur[ndx[j]+1]) < 0) {
+      rdx <- c(rdx,ndx[j]+1)
+    }
   }
   if (!is.null(rdx)) {dat <- dat[-rdx,]}
 
